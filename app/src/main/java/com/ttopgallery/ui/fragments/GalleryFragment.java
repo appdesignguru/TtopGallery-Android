@@ -4,7 +4,7 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import androidx.annotation.NonNull;
+import android.widget.Button;
 import androidx.fragment.app.Fragment;
 import com.ttopgallery.R;
 import dagger.hilt.android.AndroidEntryPoint;
@@ -16,11 +16,20 @@ public class GalleryFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState){
         View view = inflater.inflate(R.layout.fragment_gallery, container, false);
+
+        Button imagesButton = view.findViewById(R.id.gallery_fragment_imagesButton);
+        Button videosButton = view.findViewById(R.id.gallery_fragment_videosButton);
+        imagesButton.setOnClickListener(buttonView -> navigateToImageListFragment());
+        videosButton.setOnClickListener(buttonView -> navigateToVideoListFragment());
+
         return view;
     }
 
-    @Override
-    public void onViewCreated(@NonNull View view, Bundle savedInstanceState) {
-        super.onViewCreated(view, savedInstanceState);
+    private void navigateToImageListFragment(){
+
+    }
+
+    private void navigateToVideoListFragment(){
+
     }
 }

@@ -54,9 +54,8 @@ public class RegistrationFragment extends Fragment {
     public void onViewCreated(@NonNull View view, Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
         authenticationViewModel = new ViewModelProvider(requireActivity()).get(FakeAuthenticationViewModel.class);
-        authenticationViewModel.getRegistrationUiState().observe(
-                getViewLifecycleOwner(), result ->
-                        updateUI(result.getAuthenticationUiStatus(), result.getErrorMessage())
+        authenticationViewModel.getRegistrationUiState().observe(getViewLifecycleOwner(),
+                result -> updateUI(result.getAuthenticationUiStatus(), result.getErrorMessage())
         );
     }
 

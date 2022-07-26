@@ -44,14 +44,13 @@ public class LoginFragment extends Fragment {
         TextView forgotPasswordLinkTextView = view.findViewById(R.id.login_fragment_forgot_password_textView);
 
         loginButton.setOnClickListener(buttonView ->
-                authenticationViewModel.login(emailEditText.getText().toString(),
-                                        passwordEditText.getText().toString())
+                authenticationViewModel.login(
+                        emailEditText.getText().toString(), passwordEditText.getText().toString()
+                )
         );
-
         registerLinkTextView.setOnClickListener(textView ->
                 navigateToGenerateOtpFragment(OtpType.Registration)
         );
-
         forgotPasswordLinkTextView.setOnClickListener(textView ->
                 navigateToGenerateOtpFragment(OtpType.ResetPassword)
         );
@@ -63,13 +62,12 @@ public class LoginFragment extends Fragment {
     public void onViewCreated(@NonNull View view, Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
         authenticationViewModel = new ViewModelProvider(requireActivity()).get(FakeAuthenticationViewModel.class);
-        authenticationViewModel.getLoginUiState().observe(
-                getViewLifecycleOwner(), result ->
-                        updateUI(result.getAuthenticationUiStatus(), result.getErrorMessage())
+        authenticationViewModel.getLoginUiState().observe(getViewLifecycleOwner(),
+                result -> updateUI(result.getAuthenticationUiStatus(), result.getErrorMessage())
         );
     }
 
-    private void updateUI(AuthenticationUiStatus authenticationUiStatus, String inputValidationErrorMessage){
+    private void updateUI(AuthenticationUiStatus authenticationUiStatus, String errorMessage){
         switch (authenticationUiStatus){
             case LoggingIn:
                 progressBar.setVisibility(View.VISIBLE);
@@ -79,7 +77,8 @@ public class LoginFragment extends Fragment {
                 startActivity(new Intent(requireActivity(), GalleryActivity.class));
                 break;
             case InvalidInput:
-                errorTextView.setText(inputValidationErrorMessage);
+            case Failure:
+                errorTextView.setText(errorMessage);
                 progressBar.setVisibility(View.GONE);
                 loginButton.setEnabled(true);
                 break;

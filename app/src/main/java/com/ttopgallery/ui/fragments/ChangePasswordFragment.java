@@ -44,12 +44,12 @@ public class ChangePasswordFragment extends Fragment {
         changePasswordButton = view.findViewById(R.id.change_password_fragment_changePasswordButton);
         progressBar = view.findViewById(R.id.reset_password_fragment_progressBar);
 
-        changePasswordButton.setOnClickListener(buttonView -> {
+        changePasswordButton.setOnClickListener(buttonView ->
             authenticationViewModel.changePassword(
                     emailEditText.getText().toString(), currentPasswordEditText.getText().toString(),
                     newPasswordEditText.getText().toString(), confirmNewPasswordEditText.getText().toString()
-            );
-        });
+            )
+        );
 
         return view;
     }
@@ -58,9 +58,8 @@ public class ChangePasswordFragment extends Fragment {
     public void onViewCreated(@NonNull View view, Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
         authenticationViewModel = new ViewModelProvider(requireActivity()).get(FakeAuthenticationViewModel.class);
-        authenticationViewModel.getChangePasswordUiState().observe(
-                getViewLifecycleOwner(), result ->
-                        updateUI(result.getAuthenticationUiStatus(), result.getErrorMessage())
+        authenticationViewModel.getChangePasswordUiState().observe(getViewLifecycleOwner(),
+                result -> updateUI(result.getAuthenticationUiStatus(), result.getErrorMessage())
         );
     }
 
@@ -86,5 +85,4 @@ public class ChangePasswordFragment extends Fragment {
                 break;
         }
     }
-
 }

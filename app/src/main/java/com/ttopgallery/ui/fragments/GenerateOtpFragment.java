@@ -48,15 +48,13 @@ public class GenerateOtpFragment extends Fragment {
     public void onViewCreated(@NonNull View view, Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
         authenticationViewModel = new ViewModelProvider(requireActivity()).get(FakeAuthenticationViewModel.class);
-        authenticationViewModel.getGenerateOtpUiState().observe(
-                getViewLifecycleOwner(), result ->
-                        updateUI(result.getAuthenticationUiStatus(), result.getOtpType(),
+        authenticationViewModel.getGenerateOtpUiState().observe(getViewLifecycleOwner(),
+                result -> updateUI(result.getAuthenticationUiStatus(), result.getOtpType(),
                                 result.getErrorMessage())
         );
     }
 
-    private void updateUI(AuthenticationUiStatus authenticationUiStatus, OtpType otpType,
-                          String errorMessage){
+    private void updateUI(AuthenticationUiStatus authenticationUiStatus, OtpType otpType, String errorMessage){
         switch (authenticationUiStatus){
             case GeneratingOtp:
                 progressBar.setVisibility(View.VISIBLE);
@@ -66,6 +64,7 @@ public class GenerateOtpFragment extends Fragment {
                 navigateToAppropriateFragment(otpType);
                 break;
             case InvalidInput:
+            case Failure:
                 errorTextView.setText(errorMessage);
                 progressBar.setVisibility(View.GONE);
                 submitButton.setEnabled(true);
@@ -78,6 +77,7 @@ public class GenerateOtpFragment extends Fragment {
     }
 
     private void navigateToAppropriateFragment(OtpType otpType){
+
         if (otpType == OtpType.Registration){
             navigateToRegistrationFragment();
         }

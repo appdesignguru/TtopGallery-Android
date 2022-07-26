@@ -42,10 +42,10 @@ public class ResetPasswordFragment extends Fragment {
         resetPasswordButton = view.findViewById(R.id.reset_password_fragment_resetPasswordButton);
         progressBar = view.findViewById(R.id.reset_password_fragment_progressBar);
 
-        resetPasswordButton.setOnClickListener(buttonView -> {
+        resetPasswordButton.setOnClickListener(buttonView ->
             authenticationViewModel.resetPassword(newPasswordEditText.getText().toString(),
-                    confirmNewPasswordEditText.getText().toString(), otpCodeEditText.getText().toString());
-        });
+                    confirmNewPasswordEditText.getText().toString(), otpCodeEditText.getText().toString())
+        );
 
         return view;
     }
@@ -54,9 +54,8 @@ public class ResetPasswordFragment extends Fragment {
     public void onViewCreated(@NonNull View view, Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
         authenticationViewModel = new ViewModelProvider(requireActivity()).get(FakeAuthenticationViewModel.class);
-        authenticationViewModel.getResetPasswordUiState().observe(
-                getViewLifecycleOwner(), result ->
-                        updateUI(result.getAuthenticationUiStatus(), result.getErrorMessage())
+        authenticationViewModel.getResetPasswordUiState().observe(getViewLifecycleOwner(),
+                result -> updateUI(result.getAuthenticationUiStatus(), result.getErrorMessage())
         );
     }
 

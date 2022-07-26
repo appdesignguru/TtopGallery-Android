@@ -16,4 +16,6 @@
     <string name="change_password">Change Password</string>
     <string name="enter_your_email">Enter your email</string>
     <string name="enter_your_current_password">Enter your current password</string>
+    <string name="images">Images</string>
+    <string name="videos">Videos</string>
 </resources>

@@ -1,7 +1,6 @@
 package com.ttopgallery.ui.viewmodels.interfaces;
 
 import androidx.lifecycle.MutableLiveData;
-
 import com.ttopgallery.localdatasources.entities.OtpType;
 import com.ttopgallery.ui.states.ChangePasswordUiState;
 import com.ttopgallery.ui.states.GenerateOtpUiState;
