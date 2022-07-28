@@ -5,8 +5,8 @@ public class ChangePasswordUiState extends AuthenticationUiState{
 
     /** Constructs a new instance. */
     public ChangePasswordUiState(AuthenticationUiStatus authenticationUiStatus,
-                                 String inputValidationErrorMessage) {
-        super(authenticationUiStatus, inputValidationErrorMessage);
+                                 String errorMessage) {
+        super(authenticationUiStatus, errorMessage);
     }
 
 }

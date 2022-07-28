@@ -8,14 +8,12 @@
         android:id="@+id/gallery_fragment_imagesButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/images"
-        android:visibility="gone"/>
+        android:text="@string/images"/>
 
     <Button
         android:id="@+id/gallery_fragment_videosButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/videos"
-        android:visibility="gone"/>
+        android:text="@string/videos"/>
 
 </LinearLayout>

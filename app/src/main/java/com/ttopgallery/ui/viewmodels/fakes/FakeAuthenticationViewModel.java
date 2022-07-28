@@ -32,39 +32,39 @@ public class FakeAuthenticationViewModel extends ViewModel implements Authentica
 
     @Override
     public MutableLiveData<LoginUiState> getLoginUiState() {
-        loginUiState.setValue(new LoginUiState(AuthenticationUiStatus.Idle, null));
+        loginUiState.setValue(new LoginUiState(AuthenticationUiStatus.Idle, ""));
         return loginUiState;
     }
 
     @Override
     public MutableLiveData<GenerateOtpUiState> getGenerateOtpUiState() {
         generateOtpUiState.setValue(
-                new GenerateOtpUiState(AuthenticationUiStatus.Idle, null, otpType));
+                new GenerateOtpUiState(AuthenticationUiStatus.Idle, "", otpType));
         return generateOtpUiState;
     }
 
     @Override
     public MutableLiveData<RegistrationUiState> getRegistrationUiState() {
-        registrationUiState.setValue(new RegistrationUiState(AuthenticationUiStatus.Idle, null));
+        registrationUiState.setValue(new RegistrationUiState(AuthenticationUiStatus.Idle, ""));
         return registrationUiState;
     }
 
     @Override
     public MutableLiveData<ResetPasswordUiState> getResetPasswordUiState() {
-        resetPasswordUiState.setValue(new ResetPasswordUiState(AuthenticationUiStatus.Idle, null));
+        resetPasswordUiState.setValue(new ResetPasswordUiState(AuthenticationUiStatus.Idle, ""));
         return resetPasswordUiState;
     }
 
     @Override
     public MutableLiveData<ChangePasswordUiState> getChangePasswordUiState() {
-        changePasswordUiState.setValue(new ChangePasswordUiState(AuthenticationUiStatus.Idle, null));
+        changePasswordUiState.setValue(new ChangePasswordUiState(AuthenticationUiStatus.Idle, ""));
         return changePasswordUiState;
     }
 
     @Override
     public void login(String email, String password) {
         //Assumes successful login
-        loginUiState.setValue(new LoginUiState(AuthenticationUiStatus.LoginSuccessful, null));
+        loginUiState.setValue(new LoginUiState(AuthenticationUiStatus.LoginSuccessful, ""));
     }
 
     @Override
@@ -72,7 +72,7 @@ public class FakeAuthenticationViewModel extends ViewModel implements Authentica
         //Assumes successful otp generation
         generateOtpUiState.setValue(
                 new GenerateOtpUiState(AuthenticationUiStatus.OtpGeneratedSuccessfully,
-                        null, otpType)
+                        "", otpType)
         );
     }
 
@@ -80,7 +80,7 @@ public class FakeAuthenticationViewModel extends ViewModel implements Authentica
     public void register(String password, String confirmPassword, String otpCode) {
         //Assumes successful user registration
         registrationUiState.setValue(
-                new RegistrationUiState(AuthenticationUiStatus.LoginSuccessful, null)
+                new RegistrationUiState(AuthenticationUiStatus.LoginSuccessful, "")
         );
     }
 
@@ -88,7 +88,7 @@ public class FakeAuthenticationViewModel extends ViewModel implements Authentica
     public void resetPassword(String newPassword, String confirmNewPassword, String otpCode) {
         //Assumes successful password reset
         resetPasswordUiState.setValue(
-                new ResetPasswordUiState(AuthenticationUiStatus.LoginSuccessful, null)
+                new ResetPasswordUiState(AuthenticationUiStatus.LoginSuccessful, "")
         );
     }
 
@@ -96,7 +96,7 @@ public class FakeAuthenticationViewModel extends ViewModel implements Authentica
     public void changePassword(String email, String currentPassword, String newPassword, String confirmNewPassword) {
         //Assumes successful password change
         changePasswordUiState.setValue(
-                new ChangePasswordUiState(AuthenticationUiStatus.ChangePasswordSuccessful, null)
+                new ChangePasswordUiState(AuthenticationUiStatus.ChangePasswordSuccessful, "")
         );
     }
 
